@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siapa yang unfoll lu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unggah File JSON lu</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="followers">File JSON Followers:</label>
+        <input type="file" id="followers" name="followers" accept="application/json" required><br><br>
+        
+        <label for="following">File JSON Following:</label>
+        <input type="file" id="following" name="following" accept="application/json" required><br><br>
+        
+        <button type="submit">Proses</button>
+    </form>
+
+    {% if not_following_back %}
+        <h2>Akun yang Lu Follow tapi Lu ga Di Polbekk</h2>
+        <ul>
+            {% for user in not_following_back %}
+                <li>{{ user }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
