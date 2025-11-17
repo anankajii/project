@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background: #161b22;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.desc {
+    text-align: center;
+    font-size: 14px;
+    opacity: .8;
+    margin-bottom: 25px;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.file-input {
+    background: #21262d;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    font-weight: 500;
+    color: #58a6ff;
+}
+
+.file-input:hover {
+    background: #30363d;
+}
+
+.file-input input {
+    display: none;
+}
+
+/* Submit Button */
+.btn-submit {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #238636;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #2ea043;
+}
+
+/* Result Box */
+.result-box {
+    margin-top: 30px;
+    background: #21262d;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #30363d;
+}
+
+.result-box h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.count {
+    margin-bottom: 15px;
+    opacity: .8;
+}
+
+.result-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-box li {
+    background: #30363d;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.result-box li:hover {
+    background: #3c444d;
+}

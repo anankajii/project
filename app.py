@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import json
 
 app = Flask(__name__)
@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     not_following_back = []
+
     if request.method == "POST":
         followers_file = request.files.get("followers")
         following_file = request.files.get("following")
@@ -14,22 +15,33 @@ def index():
             return "Harap unggah kedua file JSON!", 400
 
         try:
+            # Parsing followers
             followers_data = json.load(followers_file)
-            followers = set(
-                user["value"]
-                for entry in followers_data
-                for user in entry["string_list_data"]
-            )
+            followers = set()
+
+            for entry in followers_data:
+                try:
+                    username = entry["string_list_data"][0]["value"]
+                    followers.add(username)
+                except:
+                    pass
+
+            # Parsing following
             following_data = json.load(following_file)
-            following = set(
-                user["value"]
-                for entry in following_data["relationships_following"]
-                for user in entry["string_list_data"]
-            )
+            following = set()
+
+            for entry in following_data["relationships_following"]:
+                try:
+                    username = entry["title"]
+                    following.add(username)
+                except:
+                    pass
+
+            # Hitung yang tidak follow balik
             not_following_back = sorted(following - followers)
 
-        except json.JSONDecodeError:
-            return "File JSON SALAHHH!!!.", 400
+        except Exception as e:
+            return f"JSON ERROR: {str(e)}", 400
 
     return render_template("index.html", not_following_back=not_following_back)
 
